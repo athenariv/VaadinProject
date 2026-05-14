@@ -2,6 +2,7 @@
 This Vaadin-project was made for the course Java web-ohjelmointi
 
 The target grade for this project is 5.
+
 35/39 features/requirements work as intended, and the remaining 4 require proper auth or proper setup to finish.
 
 # CompanyApp
