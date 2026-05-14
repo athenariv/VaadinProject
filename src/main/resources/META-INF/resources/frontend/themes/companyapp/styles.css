@@ -1,0 +1,178 @@
+/* CompanyApp Theme - styles.css */
+
+/* ===== Global Variables ===== */
+html {
+  --custom-primary: #1565c0;
+  --custom-primary-light: #1976d2;
+  --custom-accent: #00897b;
+  --custom-surface: #f5f7fa;
+  --custom-text: #1a237e;
+  --custom-border-radius: 12px;
+  --custom-transition-speed: 0.25s;
+}
+
+/* ===== Font & Body ===== */
+body {
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--custom-surface);
+}
+
+/* ===== Hover Card - zoom + shadow animation ===== */
+.hover-card {
+  transition: transform var(--custom-transition-speed) ease,
+              box-shadow var(--custom-transition-speed) ease;
+  cursor: pointer;
+}
+.hover-card:hover {
+  transform: scale(1.03) translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.16);
+}
+.hover-card:focus-within {
+  outline: 2px solid var(--custom-primary-light);
+  outline-offset: 2px;
+}
+
+/* ===== Buttons - fade + scale transitions ===== */
+vaadin-button[theme~="primary"] {
+  transition: opacity var(--custom-transition-speed) ease,
+              transform var(--custom-transition-speed) ease;
+}
+vaadin-button[theme~="primary"]:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+vaadin-button[theme~="primary"]:active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ===== OAuth Buttons (login view) ===== */
+.oauth-button {
+  transition: transform var(--custom-transition-speed) ease,
+              box-shadow var(--custom-transition-speed) ease;
+  border-radius: var(--custom-border-radius);
+}
+.oauth-button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* ===== Search field focus animation ===== */
+.search-field vaadin-text-field::part(input-field) {
+  transition: border-color var(--custom-transition-speed) ease;
+}
+.search-field vaadin-text-field:focus-within::part(input-field) {
+  border-color: var(--custom-primary-light);
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
+}
+
+/* ===== Side navigation ===== */
+vaadin-side-nav-item::part(item) {
+  border-radius: 8px;
+  transition: background-color var(--custom-transition-speed) ease;
+}
+vaadin-side-nav-item:hover::part(item) {
+  background-color: rgba(25, 118, 210, 0.1);
+}
+
+/* ===== Grid ===== */
+vaadin-grid {
+  border-radius: var(--custom-border-radius);
+  overflow: hidden;
+}
+vaadin-grid-cell-content {
+  padding: var(--lumo-space-s) var(--lumo-space-m);
+}
+
+/* ===== Admin view ===== */
+.admin-view .history-grid vaadin-grid-row:hover {
+  background-color: rgba(0, 137, 123, 0.05);
+}
+
+/* ===== Result grid ===== */
+.result-grid {
+  border: 1px solid var(--lumo-contrast-20pct);
+  border-radius: var(--custom-border-radius);
+}
+
+/* ===== Profile view card ===== */
+.profile-view > * {
+  animation: slideIn 0.4s ease;
+}
+
+/* ===== Page enter animation ===== */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Notification toasts ===== */
+vaadin-notification-card {
+  border-radius: var(--custom-border-radius);
+}
+
+/* ===== App layout header ===== */
+vaadin-app-layout::part(navbar) {
+  background: linear-gradient(135deg, var(--custom-primary), var(--custom-primary-light));
+}
+
+/* ===== Active nav link highlighting ===== */
+a.nav-link[highlight] {
+  background: rgba(25, 118, 210, 0.12);
+  color: var(--lumo-primary-text-color);
+  font-weight: 600;
+}
+a.nav-link:hover {
+  background: var(--lumo-contrast-5pct);
+  color: var(--lumo-primary-text-color);
+}
+a.nav-link {
+  transition: background var(--custom-transition-speed) ease,
+              color var(--custom-transition-speed) ease;
+}
+
+/* ===== Footer ===== */
+.app-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lumo-space-xs);
+  padding: var(--lumo-space-s) var(--lumo-space-m);
+  box-sizing: border-box;
+  background: var(--lumo-contrast-10pct);
+  border-top: 2px solid var(--custom-primary);
+  font-size: var(--lumo-font-size-xs);
+  color: var(--lumo-secondary-text-color);
+  flex-shrink: 0;
+}
+.app-footer__link {
+  color: var(--custom-primary-light);
+  text-decoration: none;
+  transition: color var(--custom-transition-speed) ease;
+}
+.app-footer__link:hover {
+  color: var(--custom-accent);
+  text-decoration: underline;
+}
+.app-footer__author {
+  font-weight: 500;
+}
+.app-footer__tech {
+  font-style: italic;
+}
+
+/* Responsive: stack on very small screens */
+@media (max-width: 480px) {
+  .app-footer {
+    flex-direction: column;
+    gap: 2px;
+    text-align: center;
+  }
+}

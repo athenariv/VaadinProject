@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  companyapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: companyapp:latest
+    container_name: companyapp
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:file:/data/companydb;AUTO_SERVER=TRUE
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_PROFILES_ACTIVE=prod
+    volumes:
+      - companyapp-data:/data
+      - companyapp-uploads:/app/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  companyapp-data:
+    driver: local
+  companyapp-uploads:
+    driver: local

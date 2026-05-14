@@ -1,0 +1,48 @@
+# Maven build output
+target/
+
+# Node / npm
+node_modules/
+package-lock.json
+
+# Vaadin generated files
+frontend/generated/
+vite.generated.ts
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.settings/
+.project
+.classpath
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build logs / runtime output
+build.log
+run-output.txt
+
+# Local database data (H2 file DB)
+data/
+*.db
+*.mv.db
+*.trace.db
+
+# Uploaded files (local dev uploads, not source code)
+uploads/
+
+# Environment / secrets (never commit these)
+.env
+.env.local
+
+# Maven wrapper can be committed, but skip if desired
+# .mvn/
+# mvnw
+# mvnw.cmd
